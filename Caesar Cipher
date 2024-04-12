@@ -1,0 +1,32 @@
+#Caesar Cipher
+
+def caesar(EoD, message, num):
+    output_text = ""
+    for letter in message:
+        if letter in alphabet:
+            position = alphabet.index(letter)
+            if EoD == "encode":
+                new_position = position + num
+            elif EoD == "decode":
+                new_position = position - num
+            else:
+                print("Invald input")
+            new_letter = alphabet[new_position]
+            output_text +=  new_letter
+        else:
+            output_text += letter
+       
+    print(f"new message is {output_text}")
+    
+playing = True
+
+while playing == True:
+    alphabet = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z','a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
+    direction = input("Type 'encode' to encrpyt, type 'decode' to decrypt:\n" )
+    text = input("Type your message:\n").lower()
+    shift = int(input("Type the shift number:\n"))
+
+    caesar(direction, text, shift)
+    play = input("Would you like to keep playing: Yes or No\n").lower()
+    if play == "no":
+        playing = False
