@@ -1,0 +1,58 @@
+#Blackjack
+import random
+
+playing = True
+tokens = 0
+cards = [2, 3, 4, 5, 6, 7, 8, 9, 10, 'J', 'Q', 'K', 'A']
+def deal():
+    Deal_C = random.choice(cards)
+    print(f"Card: {Deal_C}")
+    if Deal_C == "A":
+        n1 = input("Ace, 1 or 11")
+        if n1 == "1":
+            return 1
+        elif n1 == "11":
+            return 11
+    if Deal_C == "J" or Deal_C == "Q" or Deal_C == "K":
+        return 10
+        
+    return Deal_C
+
+def Hit_Stay(Total):
+    H_S = input("Would you like to hit or stay:")
+    if H_S == "hit":
+        Total += deal()
+        return Total
+    else:
+        return Total
+def bust(Total):
+    if Total > 21:
+        print("Bust")
+        return True
+    else:
+        return False
+
+
+while playing == True:
+    amount_1 = deal()
+    amount_2 = deal()
+    P_Total = amount_1 + amount_2
+    print(f"You have a total of {P_Total}")
+    P_Total = Hit_Stay(P_Total)
+    Bust = bust(P_Total)
+    print("House's cards are:")
+    C_Total = deal() + deal()
+    if Bust == True:
+        play = input("You lost this hand play again?")
+        if play == "no":
+            playing = False
+    elif C_Total < P_Total:
+        tokens +=1
+        play = input("You won this hand play again?")
+        if play == "no":
+            playing = False
+    elif C_Total > P_Total:
+        play = input("You lost this hand play again?")
+        if play == "no":
+            playing = False
+    print(f"token count {tokens}")
