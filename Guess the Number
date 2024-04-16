@@ -1,0 +1,36 @@
+#Guess the Number Game
+import random
+
+playing = True
+numbers = []
+def guess(gnum,rnum):
+    if gnum > rnum:
+        print("Too high")
+        return 1
+    elif gnum < rnum:
+        print("Too low")
+        return 1
+    elif gnum == rnum:
+        print("You got it")
+        return lives
+
+for x in range(1,101):
+    numbers.append(x)
+while playing == True:
+    r_number = random.choice(numbers)
+    print("Welcome to the Random Number Guessing Game")
+    print("Guess a number between 1 to 100")
+    Easy_Hard = input("Would you like easy mode or hard mode")
+    if Easy_Hard == "hard":
+        lives = 5
+        while lives > 0:
+            Guess = int(input("Guess a number:\n"))
+            lives -= guess(Guess,r_number)
+    if Easy_Hard == "easy":
+        lives = 15
+        while lives > 0:
+            Guess = int(input("Guess a number:\n"))
+            lives -= guess(Guess,r_number)
+    play = input("Would you like to play again: Y or N").lower()
+    if play == "n":
+        playing = False
