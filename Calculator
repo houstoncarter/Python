@@ -1,0 +1,28 @@
+#Calculator
+
+playing = True
+def calculation(n1,op,n2):
+    if op == "+":
+        return n1 +n2
+    elif op == "-":
+        return n1 - n2
+    elif op == "*":
+        return n1 * n2
+    elif op == "/":
+        return n1 / n2
+
+operator = ["+", "-", "*", "/"]
+F_num = int(input("What is the first number: "))
+for sym in operator:
+    print(sym)
+while playing == True:
+    op = input("Pick an operation from the Line above: ")
+    S_num = int(input("What is the next number: "))
+    answer = calculation(F_num,op, S_num)
+    print(f"{F_num} {op} {S_num} = {answer}")
+    play = input("Would you like to use to same number or exit:'y' or 'n' ")
+    if play == "y":
+        F_num = answer
+    elif play == "n":
+        playing = False
+
