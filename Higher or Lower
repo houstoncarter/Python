@@ -1,0 +1,36 @@
+#Higher or Lower
+import random
+
+tokens = 0
+playing = True
+Games = {"Counter-Strike 2": 1535009,"PUBG": 654334,"Dota 2": 608960,"Apex Legends": 333960,"NARAKA: Bladepoint": 311427,"Source SDK Base 2007": 142511,"Stardew Valley": 134952,"HELLDIVERS 2": 130135,"Grand Theft Auto V": 128243,"Wallpaper Engine": 100373,"Monster Hunter: World": 89461,"Tom Clancy's Rainbow Six Siege": 87305, "Call of Duty": 78879,"Destiny 2": 76242,"War Thunder":71028,"Fallout 4": 68104,"Palword":65668,"Football Manager 2024": 61011,"Warframe": 58659,"Baldur's Gate 3": 58221,"Crab Game": 58068,"Overwatch 2": 57826,"Team Fortress 2": 57696,"Unturned": 53411,"Path of Exile": 51520, "Elden Ring": 51334, "Sid Meier's Civilization VI": 48724,"Heart of Iron IV": 47055,"RimWorld": 45287,"EA SPORTS FC 24": 44961,"Don't Strave Together": 41575,"Dead by Daylight": 40969, "Terraria": 39652,"Red Dead Redemption 2": 39128,"DayZ": 37753,"Spacewar": 37495,"Euro Truck Simulator 2": 35289,"Lost Ark": 33539,"Cyberpunk 2077": 31675,"Lethal Company": 30599,"Fallout 76": 30299,"PAYDAY 2": 30198,"The Sims 4": 29304,"Battlefield V": 26285,"Farming Simulator 22": 23557,"Left 4 Dead 2": 23150,"Hunt: Showdown": 22665,"VRChat": 22522,"Street Fighter 6": 22121,"NBA 2K24": 21817,"Garry's Mod": 20959,"Elder Scrolls Online": 19010,"Supermarket Simulator": 18845,"The Witch 3": 18066,"Battlefield 2042": 17373,"Skyrim": 16735,"Goose Goose Duck": 16020,"Rocket League": 15410,"Content Warning": 13852,}
+print("Welcome to High or Lower Game Version")
+def new_key():
+    return random.choice(list(Games.keys()))
+
+def value(key):
+    output = Games[key]
+    return output
+
+while playing == True:
+    print(f"Score of {tokens}")
+    G1 = new_key()
+    G2 = new_key()
+    V1 = value(G1)
+    V2 = value(G2)
+    HoL = input(f"{G1} with a player count of {V1} is {G2}: Higher or Lower\n").lower()
+    if HoL == "higher":
+        if V1 > V2:
+            playing = False
+            print(f"Sorry its lower with a count of {V2}")
+        elif V1 < V2:
+            tokens += 1
+            print(f"That's right {G2} has a count of {V2}")
+    elif HoL == "lower":
+        if V1 > V2:
+            tokens += 1
+            print(f"That's right {G2} has a count of {V2}")
+        elif V1 < V2:
+            playing = False
+            print(f"Sorry its lower with a count of {V2}")
+        
