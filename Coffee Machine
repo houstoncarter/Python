@@ -1,0 +1,48 @@
+Espresso = {"Water": 50, "Coffee": 50,"Money": 1.00, "Milk": 0}
+Cappuccino = {"Water": 100,"Coffee": 100, "Milk": 50,"Money": 1.25}
+Americano = {"Water": 125,"Coffee":125, "Milk": 100,"Money": 1.50}
+Inital_Inventory = {"Water": 500,"Coffee": 500, "Milk":200, "Money":0.00}
+
+def pay(amount):
+    quarters = float(input("How many quarters"))
+    dimes = float(input("How many dimes"))
+    nickels = float(input("How many nickels"))
+    pennies = float(input("How many pennies"))
+    total = (quarters * .25) + (dimes *.10) + (nickels *.05) + (pennies *.01)
+    if total < amount:
+        print(f"Sorry you dont have enough, here is your change back {total}")
+        return False
+    if total >= amount:
+        change = total - amount
+        print(f"Here is your coffee and your change is ${change}")
+        Inital_Inventory["Money"] += amount
+        return True
+    
+def Inventory_change(coffee):
+    Inital_Inventory["Water"] -= coffee["Water"]
+    Inital_Inventory["Coffee"] -= coffee["Coffee"]
+    Inital_Inventory["Milk"] -= coffee["Milk"]
+    print(Inital_Inventory)
+
+while Inital_Inventory["Water"] > 0 and Inital_Inventory["Coffee"]> 0 and Inital_Inventory["Milk"]> 0:
+    User_Select = input("Coffee Machine: Would you like a Espresso, Cappuccino, Americano\n").lower()
+    if User_Select == "report":
+        print(Inital_Inventory)
+    if User_Select == "espesso":
+        print(f"That will be {Espresso['Money']} dollar")
+        paid = pay(Espresso["Money"])
+        if paid == True:
+            Inventory_change(Espresso)
+            
+    elif User_Select == "cappuccino":
+        print(f"That will be {Cappuccino['Money']} dollars")
+        paid = pay(Cappuccino["Money"])
+        if paid == True:
+            Inventory_change(Cappuccino)
+    elif User_Select == "americano":
+        print(f"That will be {Americano['Money']} dollars")
+        paid = pay(Americano["Money"])
+        if paid == True:
+            Inventory_change(Americano)
+
+print("Sorry we are out of supplies")
