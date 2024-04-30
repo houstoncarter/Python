@@ -27,5 +27,5 @@ for i in range(200):
     
 
 
-screen = Screen()
+screen = turtle.Screen()
 screen.exitonclick()
