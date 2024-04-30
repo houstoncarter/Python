@@ -1,0 +1,48 @@
+#Random Color Dots
+import turtle
+import random
+
+turtle.colormode(255)
+
+def random_color():
+    r = random.randint(0,255)
+    g = random.randint(0,255)
+    b = random.randint(0,255)
+    randomcol =(r,g,b)
+    return randomcol
+
+frank = turtle.Turtle()
+frank.width(10)
+frank.speed(50)
+frank.pu()
+frank.sety(-350)
+frank.setx(-375)
+
+def left_row():
+    frank.left(90)
+    frank.dot()
+    frank.forward(50)
+    frank.left(90)
+
+def right_row():
+    frank.right(90)
+    frank.dot()
+    frank.forward(50)
+    frank.right(90)
+
+for i in range(1,200):
+    frank.color(random_color())
+    frank.dot()
+    frank.forward(50)
+    if i % 15 == 0 and i % 30 ==0:
+        right_row()
+    elif i % 15 == 0:
+        left_row()
+    
+
+
+
+
+ 
+screen = turtle.Screen()
+screen.exitonclick()
