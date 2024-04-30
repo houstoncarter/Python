@@ -1,0 +1,31 @@
+#Random Path
+import turtle
+import random
+
+turtle.colormode(255)
+
+def random_color():
+    r = random.randint(0,255)
+    g = random.randint(0,255)
+    b = random.randint(0,255)
+    randomcol =(r,g,b)
+    return randomcol
+
+direction = [0, 90, 180, 270]
+frank = turtle.Turtle()
+frank.shape("turtle")
+frank.color("green")
+frank.width(10)
+frank.speed(50)
+
+
+
+for i in range(200):
+    frank.color(random_color())
+    frank.setheading(random.choice(direction))
+    frank.forward(50)
+    
+
+
+screen = Screen()
+screen.exitonclick()
